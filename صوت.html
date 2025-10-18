@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>عبدالله أحمد — تحفيظ القرآن</title>
+
+  <!-- Font Awesome للأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ======================================================
+       ستايلات عامة - Dark Mode - ألوان: أسود + جريدينت أصفر
+       ====================================================== */
+    :root{
+      --bg:#0b0b0c;
+      --card:#121214;
+      --muted:#bdbdbd;
+      --accent1:#ffd54a;
+      --accent2:#ffb300;
+      --gradient: linear-gradient(135deg,var(--accent1),var(--accent2));
+      --shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Cairo', Tahoma, Arial, sans-serif;
+      background:var(--bg);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      direction: rtl; /* تأكيد RTL */
+    }
+
+    /* ---------- Header ---------- */
+    header{
+      padding:28px 6%;
+      background:var(--gradient);
+      color:#111;
+      box-shadow: var(--shadow);
+      display:flex;
+      gap:20px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+    .avatar{
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      border:4px solid #fff;
+      background-image:url('Abdullah.jpg'); /* غير الصورة هنا بصورة عبدالله الحقيقية */
+      background-size:cover;
+      background-position:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    }
+    .brand h1{font-size:22px;margin:0}
+    .brand p{margin:4px 0 0;color:#222;font-weight:600}
+
+    nav.header-links{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    nav.header-links a{
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:10px;
+      color:#111;
+      background:rgba(255,255,255,0.9);
+      font-weight:700;
+      box-shadow:0 6px 14px rgba(0,0,0,0.12);
+    }
+    nav.header-links a.secondary{
+      background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.14)
+    }
+
+    /* ---------- Main layout ---------- */
+    main{padding:30px 6%;max-width:1200px;margin:auto}
+    h2.section-title{
+      color:var(--accent1);
+      margin:6px 0 18px;
+      text-align:right;
+      font-size:20px;
+    }
+
+    /* ---------- Intro / service ---------- */
+    .intro{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:20px;
+      align-items:center;
+      margin-bottom:28px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:14px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .service-title{font-size:18px;margin-bottom:8px}
+    .service-badge{
+      display:inline-block;padding:8px 12px;border-radius:999px;font-weight:700;
+      background:var(--gradient);color:#111;margin-top:8px;
+    }
+    .price{color:var(--accent2);font-weight:800;font-size:20px;margin-top:6px}
+
+    /* ---------- Gallery ---------- */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:12px;
+    }
+    .gallery img{
+      width:100%;
+      border-radius:12px;
+      display:block;
+      box-shadow:0 8px 30px rgba(0,0,0,0.6);
+      transition:transform .25s;
+      cursor:pointer;
+    }
+    .gallery img:hover{transform:scale(1.03)}
+
+    /* ---------- Video & Audio blocks ---------- */
+    .media-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .video-embed iframe, .map-embed iframe{
+      width:100%;height:260px;border-radius:10px;border:0;box-shadow:var(--shadow);
+    }
+    .audio-list .audio-item{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;padding:8px;border-radius:10px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      margin-bottom:10px;
+    }
+
+    /* ---------- Family cards ---------- */
+    .family-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:14px;
+    }
+    .family-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;padding:14px;text-align:right;
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    }
+    .family-card img{
+      width:100%;border-radius:8px;margin-bottom:10px;height:140px;object-fit:cover;
+    }
+    .family-card h3{color:var(--accent1);margin-bottom:6px}
+
+    /* ---------- Contact form ---------- */
+    .contact-grid{display:grid;grid-template-columns:1fr 400px;gap:20px}
+    form input, form textarea{
+      width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);
+      background:transparent;color:#fff;margin-bottom:10px;
+    }
+    form button{
+      background:var(--gradient);color:#111;border:none;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer;
+      box-shadow:0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    /* ---------- socials footer ---------- */
+    .socials{display:flex;gap:12px;justify-content:center;margin-top:8px}
+    .socials a{color:var(--accent1);font-size:22px;text-decoration:none}
+    .socials a:hover{color:var(--accent2)}
+
+    /* ---------- responsive ---------- */
+    @media(max-width:980px){
+      .intro{grid-template-columns:1fr}
+      .media-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      header{padding:18px}
+      .brand h1{font-size:18px}
+      nav.header-links{width:100%;justify-content:center;gap:8px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================
+       HEADER - ترحيب سريع + اسم عبدالله + صورة
+       - الكومنتات تحت بتشرح الفكرة للطلبة
+       ====================================================== -->
+  <header>
+    <!-- اليمين: شعار واسم -->
+    <div class="brand">
+      <!-- الصورة: استبدل اللينك بصورة عبدالله الحقيقية -->
+      <div class="avatar" title="صورة عبدالله"></div>
+
+      <!-- نص صغير يشرح الخدمة بشكل جذاب -->
+      <div>
+        <h1>عبدالله أحمد</h1>
+        <p style="margin-top:6px;font-weight:700">معلم تحفيظ قرآن كريم - دروس خصوصي و مجموعات</p>
+      </div>
+    </div>
+
+    <!-- الشمال: روابط سريعة -->
+    <nav class="header-links">
+      <!-- دا زر رابط مباشر للجزء بتاع الحجز -->
+      <a href="#contact">احجز درس</a>
+      <a href="#gallery" class="secondary">شوف المعرض</a>
+    </nav>
+  </header>
+
+  <!-- ======================================================
+       MAIN - المحتوى الرئيسي
+       ====================================================== -->
+  <main>
+
+    <!-- ====== INTRO / Service card ====== -->
+    <section class="intro">
+      <!-- description -->
+      <div class="card">
+        <div class="service-title">خدمة تحفيظ القرآن الكريم</div>
+        <p class="service-desc" style="color:var(--muted)">
+          دروس تحفيظ وتلاوة وحفظ بمراجعات دورية، مناسب للأطفال والشباب. جلسات أونلاين و حضورية بالفيوم.
+        </p>
+
+        <!-- شوية مميزات صغيرين -->
+        <div style="margin-top:12px">
+          <span class="service-badge">متابعة فردية</span>
+          <span class="service-badge" style="margin-inline-start:8px">شهادة إتمام</span>
+        </div>
+
+        <div style="margin-top:12px" class="price">السعر: يتم الاتفاق</div>
+
+        <!-- ملحوظة للمعلم: هنا ممكن تحط زر تواصل مباشر بالواتساب -->
+        <div style="margin-top:14px">
+          <a class="btn" href="https://wa.me/+201070678667" target="_blank"><i class="fa-brands fa-whatsapp"></i> راسلني على واتساب</a>
+        </div>
+
+        <!-- تعليقات في الكود للطلبة -->
+        <!--
+          شرح للطلبة:
+          - الكارت ده بيعرض الخدمة الأساسية.
+          - بدل السعر ممكن تكتب سعر ثابت أو تخلي "اتفاق" زي هنا.
+          - زر الواتساب بيستخدم واجهة wa.me ودي طريقة سهلة للتواصل السريع.
+        -->
+      </div>
+
+      <!-- جانب الصورة/فيديو قصير أو عرض -->
+      <aside class="card" style="text-align:center">
+        <div style="font-weight:800;color:var(--accent1)">عرض قصير</div>
+        <!-- مثال فيديو يوتيوب تعليمي قصير (غير الـsrc لحلقات عبدالله الحقيقة) -->
+        <div style="margin-top:12px">
+          <iframe src="https://www.youtube.com/embed/XIDEtoc-pIE?si=4Bitw3fmui0wjmDR" frameborder="0" allowfullscreen style="width:100%;height:200px;border-radius:10px"></iframe>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ====== GALLERY - معرض الصور ====== -->
+    <section id="gallery">
+      <h2 class="section-title">معرض صور ومقاطع</h2>
+      <div class="card">
+        <p style="color:var(--muted);text-align:right">صور من الدروس، واللقطات أثناء المراجعة.</p>
+
+        <!-- Grid صور -->
+        <div class="gallery" style="margin-top:12px">
+          <!-- استبدل الصور بالصور الحقيقية -->
+          <img src="Abdullah.jpg" alt="صورة 1">
+          <img src="الشيخ عبدالرمن.jpg" alt="صورة 2">
+          <img src="الشيخ ماهر.jpeg" alt="صورة 3">
+          <img src="unnamed (1).png" alt="صورة 4">
+        </div>
+
+        <!-- ----- مقاطع صوتية ----- -->
+        <div style="margin-top:18px">
+          <h3 style="color:var(--accent1);margin-bottom:8px;text-align:right">مقاطع صوتية</h3>
+          <div class="audio-list">
+            
+
+            <!-- مثال 3: بلاي ليست -->
+            <div class="audio-item">
+              <div style="text-align:right">
+                <strong>تلاوات من القرآن الكريم</strong>
+                <div style="color:var(--muted);font-size:13px">جزئية من سورة ق</div>
+              </div>
+              <audio controls>
+                <source src="New folder/001.mp3" type="audio/mpeg">
+              </audio>
+            </div>
+          </div>
+        </div>
+
+        <!-- ----- فيديوهات (يوتيوب) ----- -->
+        <div style="margin-top:18px">
+          <h3 style="color:var(--accent1);margin-bottom:8px;text-align:right">فيديوهات</h3>
+          <div class="media-grid">
+            <!-- مثالين مدمجين -->
+            <div class="video-embed card">
+              <!-- مثال iframe يوتيوب - غير اللينك للفيديوهات الحقيقة بتاعت عبدالله -->
+              <iframe src="https://www.youtube.com/embed/ygowQrsGtOo?si=xMq3UedSdRGYjrVd" allowfullscreen></iframe>
+            </div>
+            <div class="video-embed card">
+              <iframe src="https://www.youtube.com/embed/6CqOp5h0yxA?si=pHChfzF1zuo-hdJ2" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- ====== MAP + CONTACT FORM ====== -->
+    <section id="contact" style="margin-top:26px">
+      <h2 class="section-title">تواصل واحجز درس</h2>
+
+      <div class="card contact-grid">
+        <!-- الفورم (على اليمين في RTL) -->
+        <div>
+          <form id="contactForm">
+            <!-- ملاحظة: استخدم backend حقيقي أو خدمات زي Formspree لو مش عندك backend -->
+            <input type="text" name="name" id="name" placeholder="اسمك" required>
+            <input type="email" name="email" id="email" placeholder="إيميلك" required>
+            <input type="text" name="phone" id="phone" placeholder="رقم التليفون / واتساب" required>
+            <textarea name="message" id="message" rows="5" placeholder="رسالتك أو طلب الحجز" required></textarea>
+            <button type="submit">ابعت طلب</button>
+            <div id="formMsg" style="margin-top:10px;color:var(--muted)"></div>
+          </form>
+
+          <!-- شروحات في الكود للطلبة:
+               - الفورم ده هيبعت بياناته باستخدام fetch للـ API اللي هتحدده في السكربت تحت.
+               - لو مش هتعمل backend ممكن تستخدم Formspree أو Google Forms. -->
+        </div>
+
+        <!-- الخريطة على الشمال -->
+        <div>
+          <div style="margin-bottom:12px;text-align:right;color:var(--muted)">موقع عبدالله في الفيوم</div>
+          <!-- استخدمنا iframe embed لجوجل ماب جاهز؛ الاحداثيات تشير لـ محافظة الفيوم -->
+          <div class="map-embed">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6957.966475384812!2d30.85365291068838!3d29.31216735279171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145978dbf8917075%3A0x550f8cbf23fc9d1e!2z2YXYs9iq2LTZgdmJINin2YTZhtiv2Ykg2KfZhNiq2K7Ytdi12Yog2KjYp9mE2YHZitmI2YU!5e0!3m2!1sen!2sus!4v1760211231516!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <div style="margin-top:10px;color:var(--muted);font-size:14px;text-align:right">
+            العنوان التقريبي: مدينة الفيوم - مصر
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FOOTER - Socials ====== -->
+    <footer style="margin-top:26px">
+      <div style="text-align:center;margin-bottom:8px">تابع عبدالله على السوشيال</div>
+      <div class="socials">
+        <!-- استبدل الروابط بالروابط الحقيقية -->
+        <a href="https://wa.me/+201070678667" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/1BWsXs7Zms/" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.youtube.com/@%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D9%84%D9%87%D8%A7%D8%AD%D9%85%D8%AF-%D8%AE7%D8%AB3%D8%B9" target="_blank" title="يوتيوب"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+
+      <div style="margin-top:12px;color:var(--muted)">© 2025 عبدالله أحمد - كل الحقوق محفوظة</div>
+    </footer>
+
+  </main>
+
+  <!-- ======================================================
+       SCRIPTS
+       - js للفورم (ارسال بـ fetch للـ endpoint)
+       - ملاحظات وتعليقات تعليمية للطلبة
+       ====================================================== -->
+  <script>
+    // ====================================
+    // تعليق تعليمي: فورم التواصل
+    // - هنا بنمنع السلوك الافتراضي (refresh page)
+    // - بنجمع الداتا ونبعتها بـ fetch كـ POST JSON
+    // - في المشروع الحقيقي: استبدل URL بالـ endpoint بتاع السيرفر أو استخدم خدمة Formspree
+    // ====================================
+    document.getElementById('contactForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+
+      const msgBox = document.getElementById('formMsg');
+      msgBox.textContent = 'جاري إرسال الرسالة...';
+
+      const data = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        message: document.getElementById('message').value.trim(),
+      };
+
+      // ---- ملاحظة مهمة للطلبة:
+      // لو مفيش backend جاهز ممكن تشوف Formspree أو Google Forms أو تبني API صغير بـ Node/PHP/Python
+      // هنا المثال بيبعث لـ رابط وهمي - استبدله بالرابط الحقيقي
+      const ENDPOINT = 'https://example.com/api/contact'; // <-- غيره للرابط الحقيقي
+
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(data)
+        });
+
+        if(res.ok){
+          msgBox.textContent = 'تم إرسال الطلب بنجاح. هنرد عليك قريباً!';
+          this.reset();
+        } else {
+          // لو السيرفر رجع خطأ
+          msgBox.textContent = 'حصلت مشكلة أثناء الإرسال، حاول تاني بعد شوية.';
+        }
+      } catch (err){
+        // لو الشبكة أو الرابط مش موجود
+        msgBox.textContent = 'مشكلة بالشبكة أو الرابط غير موجود. تقدر تستخدم واتساب كحل مؤقت.';
+      }
+    });
+
+    // ====================================
+    // تعليق للطلبة: تحسينات مقترحة للموقع اللي ممكن تعملوها بعد كده
+    // - إضافة صفحة خاصة لكل فرد عيلة (family1.html ...) وتحط فيها تفاصيل وصور.
+    // - تخزين الرسائل في قاعدة بيانات وعرضها في لوحة إدارة.
+    // - صنع صفحة حجز مع تقويم (calendar) واستخدام إشعارات (email/SMS).
+    // - تمكين تشغيل المسارات الصوتية في مشغل مخصص به Playlist وواجهة أفضل.
+    // ====================================
+  </script>
+
+</body>
+</html>/
